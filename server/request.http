@@ -1,0 +1,49 @@
+GET http://localhost:3000 HTTP/1.1
+
+###
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "Vinhvinhvi",
+    "password": "vinh"
+}
+
+###
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "Vinh3",
+    "password": "vinh"
+}
+
+###
+POST http://localhost:3000/api/note HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2Mzk5Nzg3NjZ9.DmbtYsLwXVMrQ--jodpDn2w-2FZYTagUsZulqCIcFJQ
+
+
+{
+    "title": "Vinh hihihel",
+    "description": "abc"
+}
+
+###
+GET http://localhost:3000/api/note HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2Mzk5Nzg3NjZ9.DmbtYsLwXVMrQ--jodpDn2w-2FZYTagUsZulqCIcFJQ
+
+
+###
+PUT http://localhost:3000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2MzgzMzYwNDN9.zi7QJBqENvneEBRBzTSM36AtuXRiLRzkE936Ad7bI3M
+
+{
+    "title": "Vinh welcome",
+    "description": "abc"
+}
+
+###
+DELETE http://localhost:3000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2MzgzMzYwNDN9.zi7QJBqENvneEBRBzTSM36AtuXRiLRzkE936Ad7bI3M
