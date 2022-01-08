@@ -46,8 +46,8 @@ html, body {
   border-radius: .25rem;
   background-color: #FBF887;
   box-shadow: 0 0 5px 2px rgba(0,0,0,.3);
-  height: 180px;
-  width: 200px;
+  height: 300px;
+  width: 350px;
   transition: 500ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
   transform-style: preserve-3d;
@@ -57,7 +57,7 @@ html, body {
 .Card:hover {
   --translate-y: -3px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-  border: solid 2px;
+  border: solid 5px;
   border-color:#5DBA92
 }
 .Card.flip {
