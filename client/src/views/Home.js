@@ -56,9 +56,9 @@ const Home = () => {
         body=(
             <>
             <br/>
-            <Row className= "mx-auto mt-5 NoteCollections-container">
+            <div className= "row mx-auto mt-5 NoteCollections-container">
             {notes.map(note=>(
-                <Col key={note._id}>
+                <div key={note._id} className= "col me-4">
                     
                     <div
                     className={"Card"+(note.done ? ' flip' : '')}
@@ -82,10 +82,10 @@ const Home = () => {
                         </div>
                     </div>
                     <br/>
-                </Col>
+                </div>
                 
             ))}
-            </Row>
+            </div>
 
             {/* Show_add_note button*/}
             <OverlayTrigger placement='left' overlay={<Tooltip>Add a new note to remember tasks</Tooltip>}>
