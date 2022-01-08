@@ -5,6 +5,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useState, useContext} from 'react'
 import {AuthContext} from '../../Contexts/AuthContext'
 import AlertMessage from '../layout/AlertMessage'
+import FormLabel from 'react-bootstrap/FormLabel'
 
 const LoginForm = () =>{
     const navigate = useNavigate()
@@ -41,23 +42,26 @@ const LoginForm = () =>{
         
     }
 
-    return <>
+    return <div className="text-center">
     <Form onSubmit={login}>
         <AlertMessage info={alert} />
         <Form.Group>
+            <FormLabel className="text-white">Username:</FormLabel>
             <Form.Control type="text" placeholder="Username" name="username" required value={username} onChange={onChangeLoginForm}></Form.Control>
         </Form.Group>
         <Form.Group>
+            <FormLabel className="text-white">Password:</FormLabel>
             <Form.Control type="password" placeholder="Password" name="password" required value={password}  onChange={onChangeLoginForm}></Form.Control>
         </Form.Group>
-        <Button variant="success" type="submit">Login</Button>
+        <Button variant="success" type="submit" className="mt-2">Login</Button>
     </Form>
-<p>Don't have an account?
+    <hr className="text-white"></hr>
+<p className="text-white me-2">Don't have an account?
     <Link to= '/register'>
-    <Button variant="primary" size='sm'>Register</Button>
+    <Button variant="primary" size='sm' className="ms-2">Register</Button>
     </Link>
 </p>
-</>
+</div>
 }
 
 export default LoginForm

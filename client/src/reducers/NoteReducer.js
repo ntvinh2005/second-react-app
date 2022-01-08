@@ -24,6 +24,17 @@ const NoteReducer = (state, action) => {
                 ...state,
                 notes: state.notes.filter(note => note._id!==payload)
             }
+        case 'UPDATE_NOTE':
+            state.notes.map(note => console.log(note._id))
+            const newNotes = state.notes.map(note =>
+				note._id === payload._id ? payload : note
+			)
+
+			return {
+				...state,
+				notes: newNotes
+			}
+
     }
 }
 export default NoteReducer

@@ -74,7 +74,6 @@ router.post('/login', async(req, res) =>{
         // Good confirmed
         // Return Token
         const accessToken = jsonwebtoken.sign({userId: user._id},'jdhjhdjskcnkan838ujcnjdn')
-        console.log(accessToken)
         res.status(200).json({success: true, message: 'Logged in successfully!', accessToken, user})
     } catch (error) {
         console.log(error)

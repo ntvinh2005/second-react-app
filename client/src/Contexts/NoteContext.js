@@ -59,8 +59,29 @@ const NoteContextProvider = ({children})=>{
         }
     }
 
+    //update note
+    const updateNote = async updatedNote => {
+		try {
+			const response = await axios.put(
+				`${apiUrl}/note/${updatedNote._id}`,
+				updatedNote
+			)
+            console.log(response.data)
+			if (response.data.success) {
+				dispatch({ type: 'UPDATE_NOTE', payload: response.data.note })
+                console.log(response.data.note)
+				return response.data
+			}
+		} catch (error) {
+			//return error.response.data
+				//? error.response.data
+				//: { success: false, message: 'Server error' }
+		}
+	}
+    
+
     //context data
-    const noteContextData = {getNotes, addNote, deleteNote, noteState, showAddNote, setShowAddNote, showToast, setShowToast}
+    const noteContextData = {getNotes, addNote, deleteNote, updateNote, noteState, showAddNote, setShowAddNote, showToast, setShowToast}
 
     //return provider
     return (

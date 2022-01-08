@@ -18,11 +18,18 @@ import ActionButton from '../components/notes/ActionButton'
 
 const Home = () => {
     const {authState: {authLoading, isAuthenticated, user}} = useContext(AuthContext)
-    const {noteState: {notes, noteLoading}, getNotes, setShowAddNote, showToast, setShowToast}= useContext(NoteContext)
+    const {noteState: {notes, noteLoading}, getNotes, updateNote, setShowAddNote, showToast, setShowToast}= useContext(NoteContext)
     useEffect(() => getNotes(),[])
     let body=null
     let username=null
-    console.log(typeof(user))
+
+    const onsubmit = async (note) => {
+        note.done == true ? note.done = false : note.done = true
+        await updateNote(note)
+        console.log(note.done)
+	}
+
+
     if (user!==null) username=user.username
     if (noteLoading){
         body=(<div className='d-flex justify-content-center mt-2'>
@@ -32,15 +39,14 @@ const Home = () => {
     else  if (notes.length===0){
         body=(
             <>
-            <Card>
+            <br/>
+            <Card className='mt-5 text-center'>
                 <Card.Header as='h1'>Hi {username}</Card.Header>
-                <Card.Title>Welcome to Vinh's app</Card.Title>
+                <Card.Title>Welcome to {username}'s app</Card.Title>
                 <Card.Text>If you haven't have any note, try to add one now!</Card.Text>            
             </Card>
-            <Button className="btn btn-primary position-absolute top-50 start-50 translate-middle rounded-pill" onClick={setShowAddNote.bind(this, true)}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                </svg>
+            <Button className="btn position-absolute start-50 top-50 translate-middle text-center mt-3 rounded-circle fw-bolder btn-lg" onClick={setShowAddNote.bind(this, true)}>
+            +
             </Button>
             </>
         )
@@ -49,28 +55,42 @@ const Home = () => {
         console.log(notes)
         body=(
             <>
-            <Row>
+            <br/>
+            <Row className= "mx-auto mt-5 NoteCollections-container">
             {notes.map(note=>(
                 <Col key={note._id}>
-                    <Card className='shadow-lg ms-0 me-0 mb-3 rounded'> 
-                        <Card.Header className='bg-dark text-white text-center'>
+                    
+                    <div
+                    className={"Card"+(note.done ? ' flip' : '')}
+                    onClick={onsubmit.bind(this, note)}>
+                        <div className="front">
+                        <div className='Card-header p-2'>
                             {note.title}
-                        </Card.Header>
-                        <Card.Body className='bg-secondary text-white text-center'>
-                        <Card.Text>{note.description}</Card.Text>
+                        </div>
+                        <div>
+                        <p className='Card-body'>{note.description}</p>
+                        <p className='Card-body'>{note.deadline == undefined ? null : String(note.deadline.split("T")[0])}</p>
+                        </div>
                         <ActionButton _id={note._id}></ActionButton>
-                        </Card.Body>
-                    </Card>
+                        </div>
+                        <div className="back">
+                        <div className='Card-header p-2'>
+                            {note.title}
+                        </div>
+                        <p>DONE</p>
+                        <ActionButton _id={note._id}></ActionButton>
+                        </div>
+                    </div>
+                    <br/>
                 </Col>
+                
             ))}
             </Row>
 
             {/* Show_add_note button*/}
             <OverlayTrigger placement='left' overlay={<Tooltip>Add a new note to remember tasks</Tooltip>}>
-            <Button className="btn btn-primary position-absolute top-50 end-0 translate-middle rounded-pill" onClick={setShowAddNote.bind(this, true)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-            </svg>
+            <Button className="btn-floating rounded-circle fw-bolder btn-lg" onClick={setShowAddNote.bind(this, true)}>
+            +
             </Button>
             </OverlayTrigger>
             </>
@@ -86,7 +106,7 @@ const Home = () => {
         )
     else if (isAuthenticated)
         return (
-            <>
+            <div className="body">
             <Navbar></Navbar>
             {body}
             <AddPost></AddPost>
@@ -98,7 +118,7 @@ const Home = () => {
             })} delay={3000} autohide animation='true'>
                 <strong>{showToast.message}</strong>
             </Toast>
-            </>
+            </div>
         ) 
     else{
         

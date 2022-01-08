@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const authRouter = require('./routes/auth')
 const noteRouter = require('./routes/note')
+const groupRouter = require('./routes/group')
 
 const connectDB = async () =>{
     try{
@@ -31,6 +32,7 @@ app.use(cors())
 app.get('/', (req, res)=>res.send('Hello world'))
 app.use('/api/auth', authRouter)
 app.use('/api/note', noteRouter)
+app.use('/api/group', groupRouter)
 
 const PORT = process.env.PORT||5000
 

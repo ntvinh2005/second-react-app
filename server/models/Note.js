@@ -9,6 +9,12 @@ const NoteSchema = new Schema({
     description: {
         type: String
     },
+    deadline: {
+        type: Date
+    },
+    done: { 
+        type: Boolean
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'

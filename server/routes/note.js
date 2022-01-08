@@ -22,7 +22,7 @@ router.get('/', verifyToken, async(req, res) => {
 // @access Private
 
 router.post('/', verifyToken,  async(req, res) =>{
-    const {title, description} = req.body
+    const {title, description, deadline} = req.body
     console.log(!title)
     console.log(String(title))
 
@@ -34,6 +34,8 @@ router.post('/', verifyToken,  async(req, res) =>{
         const newNote = new Note({
             title, 
             description,
+            deadline,
+            done: false,
             user: req.userId
         })
         await newNote.save()
@@ -49,7 +51,7 @@ router.post('/', verifyToken,  async(req, res) =>{
 // @desc Update post
 // @access Private
 router.put('/:id', verifyToken, async (req, res) => {
-	const { title, description } = req.body
+	const { title, description, deadline, done } = req.body
 
 	// Simple validation
 	if (!title)
@@ -61,6 +63,8 @@ router.put('/:id', verifyToken, async (req, res) => {
         let updatedNote = {
             title,
             description: description || '',
+            deadline,
+            done: done
         }
 
         const postUpdateCondition = {_id: req.params.id, user: req.userId}
@@ -72,7 +76,7 @@ router.put('/:id', verifyToken, async (req, res) => {
         if (!updatedNote)
         return res.status(401).json({success: false, message: 'Post not found or not authorised'})
 
-        res.json({success: true, message: 'Congratuation!'})
+        res.json({success: true, message: 'Congratuation!', note: updatedNote})
     } catch (error) {
         
     }

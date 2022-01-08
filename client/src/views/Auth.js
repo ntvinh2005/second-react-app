@@ -27,10 +27,13 @@ const Auth = ({authRoute}) => {
         </>
         )
     return (
-        <>
-        <h1>Welcome to our website</h1>
-        {body}
-        </>
+        <div className="loginPage">
+            <div className="p-5 loginForm">
+                <h1 className="text-center text-white">Welcome to our website</h1>
+                <hr className="text-white"></hr>
+                {body}
+            </div>
+        </div>
     )
 }
 export default Auth

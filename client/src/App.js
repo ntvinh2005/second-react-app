@@ -5,8 +5,10 @@ import Landing from './components/layout/Landing'
 import Home from './views/Home';
 import AuthContextProvider from './Contexts/AuthContext';
 import NoteContextProvider from './Contexts/NoteContext';
+import {useEffect} from 'react'
 
 function App() {
+	useEffect(() => document.title = 'Vinh app', [])
     return (
       <>
 	  <AuthContextProvider>

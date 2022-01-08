@@ -1,7 +1,7 @@
-GET http://localhost:3000 HTTP/1.1
+GET http://localhost:5000 HTTP/1.1
 
 ###
-POST http://localhost:3000/api/auth/register HTTP/1.1
+POST http://localhost:5000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/auth/login HTTP/1.1
+POST http://localhost:5000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
@@ -19,23 +19,24 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/note HTTP/1.1
+POST http://localhost:5000/api/note HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2Mzk5Nzg3NjZ9.DmbtYsLwXVMrQ--jodpDn2w-2FZYTagUsZulqCIcFJQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2NDE1NzEwODZ9.E03eI9Tf3TVOOFlNwGbeI8rZ65tuoJrW96J_pO5z7G8
 
 
 {
     "title": "Vinh hihihel",
-    "description": "abc"
+    "description": "abc",
+    "deadline": "2015-12-24"
 }
 
 ###
-GET http://localhost:3000/api/note HTTP/1.1
+GET http://localhost:5000/api/note HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2Mzk5Nzg3NjZ9.DmbtYsLwXVMrQ--jodpDn2w-2FZYTagUsZulqCIcFJQ
 
 
 ###
-PUT http://localhost:3000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
+PUT http://localhost:5000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2MzgzMzYwNDN9.zi7QJBqENvneEBRBzTSM36AtuXRiLRzkE936Ad7bI3M
 
@@ -45,5 +46,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2M
 }
 
 ###
-DELETE http://localhost:3000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
+DELETE http://localhost:5000/api/note/61a61efc9b5c0cef3f2baffb HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2MzgzMzYwNDN9.zi7QJBqENvneEBRBzTSM36AtuXRiLRzkE936Ad7bI3M
+
+###
+POST http://localhost:5000/api/group/createGroup HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2NDEyODc4MTR9.JB7CuQHmfCflqa_0lEYucAHvW3UWyPlLYN7shxLSjDk
+
+{
+    "groupname": "Vinh's group",
+    "code": "2006trang"
+}
+
+###
+GET http://localhost:5000/api/group/loginGroup HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWE2MTkxMGRhZjQ4MDBjMjg1NjI5ZmMiLCJpYXQiOjE2NDEyODc4MTR9.JB7CuQHmfCflqa_0lEYucAHvW3UWyPlLYN7shxLSjDk
+
+{
+    "code": "2006trang"
+}
