@@ -59,7 +59,7 @@ const Home = () => {
             <div className= "row mx-auto mt-5 NoteCollections-container">
             {notes.map(note=>(
                 <div key={note._id} className= "col me-4">
-                    
+                    <OverlayTrigger placement='top' overlay={<Tooltip>Have you finished it? Yes = Click me/ No = Good luck!</Tooltip>}>
                     <div
                     className={"Card"+(note.done ? ' flip' : '')}
                     onClick={onsubmit.bind(this, note)}>
@@ -81,6 +81,7 @@ const Home = () => {
                         <ActionButton _id={note._id}></ActionButton>
                         </div>
                     </div>
+                    </OverlayTrigger>
                     <br/>
                 </div>
                 
