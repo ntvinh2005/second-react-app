@@ -125,20 +125,20 @@
 	position: fixed;
 	right: 3rem;
 	bottom: 3rem;
-	background: transparent;
+	background: rgb(0, 140, 255);
 	border-radius: 50%;
   font-size: larger;
   font-weight: bold;
 }
 
 .btn-floating:hover {
-	background: transparent;
+	background: rgb(0, 140, 255);
 }
 
 .btn-floating:focus,
 .btn-floating:active {
 	outline: none;
-	background: transparent;
+	background: rgb(0, 140, 255);
 	border: none;
 	box-shadow: none;
 }
