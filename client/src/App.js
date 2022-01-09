@@ -1,4 +1,5 @@
 import './App.css';
+import "weather-icons/css/weather-icons.css";
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Auth from './views/Auth';
 import Landing from './components/layout/Landing'
