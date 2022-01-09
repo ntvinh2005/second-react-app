@@ -5,8 +5,6 @@ import { AuthContext } from '../Contexts/AuthContext'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import Navbar from '../components/layout/NavBar'
 import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/esm/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
@@ -52,7 +50,6 @@ const Home = () => {
         )
     }
     else {
-        console.log(notes)
         body=(
             <>
             <br/>
