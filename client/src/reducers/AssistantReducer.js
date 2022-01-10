@@ -6,13 +6,15 @@ const AssistantReducer = (state, action) => {
             return {
                 ...state,
                 weatherLoading: false,
-                weatherData: payload, 
+                weatherData: payload[0], 
+                weatherIcon: payload[1]
             }
         case 'WEATHER_DATA_LOADED_FAIL':
             return {
                 ...state,
                 weatherLoading: false,
                 weatherData: [], 
+                weatherIcon: ''
             }
         default: return state
     }

@@ -94,6 +94,7 @@ html, body {
 .Modal-start-end{
   background-color:#e7e68f;
   width: 100%;
+  height: 100%;
   top: 0;
   text-align: center;
 }
@@ -138,4 +139,35 @@ html, body {
 	background: rgb(0, 140, 255);
 	border: none;
 	box-shadow: none;
+}
+
+.searchArea {
+  background-color: #C3FCF1
+}
+
+.container {
+  align-items: center;
+}
+
+.Weather-card {
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: .25rem;
+  background-color: #FBF887;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,.3);
+  min-height: 100vh;
+  width: 80vw;
+  transition: 500ms;
+  transform: perspective(1000px) translateY(var(--translate-y, 0));
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.Weather-card:hover {
+  --translate-y: -5px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+  border: solid 5px;
+  border-color:#5DBA92
 }

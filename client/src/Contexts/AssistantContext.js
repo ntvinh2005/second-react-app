@@ -11,8 +11,47 @@ const AssistantContextProvider = ({children})=>{
     const [weatherState, dispatch] = useReducer(AssistantReducer, {
         weatherLoading: true,
         weatherData: [],
+        weatherIcon: ''
     })
 
+    const chooseWeather = (weatherData) => {
+        let weatherIcon = ''
+        let main_weather = ''
+        console.log(weatherData)
+        if (weatherData.weather !== undefined)
+            main_weather = weatherData.weather[0].main
+        switch(main_weather){
+            case 'Clear':
+                weatherIcon = 'wi-night-clear'
+                break
+            case 'Clouds':
+                weatherIcon = 'wi-cloudy'
+                break
+            case 'Thunderstorm':
+                weatherIcon = 'wi-thunderstorm'
+                break
+            case 'Drizzle':
+                weatherIcon = 'wi-showers'
+                break
+            case 'Rain':
+                weatherIcon = 'wi-rain'
+                break
+            case 'Snow':
+                weatherIcon = 'wi-snowflake-cold'
+                break
+            case 'Mist':
+                weatherIcon = 'wi-fog'
+                break
+            case 'Fog':
+                weatherIcon = 'wi-fog'
+                break
+            case 'Dust':
+                weatherIcon = 'wi-dust'
+                break
+            default: weatherIcon = ''
+        }
+        return weatherIcon
+    }
 
     const getWeatherData = async(city) => {
         if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
@@ -23,7 +62,9 @@ const AssistantContextProvider = ({children})=>{
                 headers: { 'Content-Type': 'application/json'}
             })
             console.log(response.data)
-            dispatch({type: 'WEATHER_DATA_LOADED_SUCCESS', payload: response.data})
+            let weatherIcon = chooseWeather(response.data)
+            dispatch({type: 'WEATHER_DATA_LOADED_SUCCESS', payload: [response.data, weatherIcon]})
+
         } catch (error) {
             dispatch({type:'WEATHER_DATA_LOADED_FAIL'})
         }
