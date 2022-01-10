@@ -19,8 +19,8 @@ const AssistantContextProvider = ({children})=>{
            setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
         }
         try {
-            const response = await axios.get('https://serene-coast-39786.herokuapp.com/https://private-cors-server.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=f154a0aeffa7fdc817bcf2dac6c1e6af&units=metric', {
-                npmheaders: { 'Content-Type': 'application/json'}
+            const response = await axios.get('https://serene-coast-39786.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=f154a0aeffa7fdc817bcf2dac6c1e6af&units=metric', {
+                headers: { 'Content-Type': 'application/json'}
             })
             console.log(response.data)
             dispatch({type: 'WEATHER_DATA_LOADED_SUCCESS', payload: response.data})
