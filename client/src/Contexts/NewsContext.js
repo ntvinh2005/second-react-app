@@ -21,10 +21,10 @@ const NewsContextProvider = ({children})=>{
            setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
         }
         try {
-            const response1 = await axios.get('https://serene-coast-39786.herokuapp.com/https://newsapi.org/v2/top-headlines?q='+topic+'&from=2021-12-11&sortBy=publishedAt&apiKey=1f8c3e472c1c4909bdb87065ce2e74de&language=en', {
+            const response1 = await axios.get('https://serene-coast-39786.herokuapp.com/https://gnews.io/api/v4/top-headlines?q='+topic+'&token=1edbbaa04816f09d9f2ed02e0576308b&lang=en', {
                 headers: { 'Content-Type': 'application/json'}
             })
-            const response2 = await axios.get('https://serene-coast-39786.herokuapp.com/https://newsapi.org/v2/everything?q='+topic+'&from=2021-12-11&sortBy=publishedAt&apiKey=1f8c3e472c1c4909bdb87065ce2e74de&language=en', {
+            const response2 = await axios.get('https://serene-coast-39786.herokuapp.com/https://gnews.io/api/v4/search?q='+topic+'&token=1edbbaa04816f09d9f2ed02e0576308b&lang=en', {
                 headers: { 'Content-Type': 'application/json'}
             })
             console.log(response1.data, response2.data)
