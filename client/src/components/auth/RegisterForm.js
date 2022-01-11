@@ -73,6 +73,9 @@ const RegisterForm = () => {
     <Button variant="primary" size='sm' className="text-white ms-2">Login</Button>
     </Link>
 </p>
+    <Link className="me-2 text-decoration-none" variant = "secondary" to= '/assistant'>
+        <h5>or visit us as a guest</h5>
+    </Link>
 </>
 }
 

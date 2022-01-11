@@ -5,9 +5,11 @@ import Auth from './views/Auth';
 import Landing from './components/layout/Landing'
 import Home from './views/Home';
 import Assistant from './views/Assistant'
+import News from './views/News'
 import AuthContextProvider from './Contexts/AuthContext';
 import NoteContextProvider from './Contexts/NoteContext';
 import AssistantContextProvider from './Contexts/AssistantContext'
+import NewsContextProvider from './Contexts/NewsContext'
 
 import {useEffect} from 'react'
 
@@ -17,6 +19,7 @@ function App() {
       <>
 	  <AuthContextProvider>
 		  <AssistantContextProvider>
+			<NewsContextProvider>
 		  <NoteContextProvider>
       <BrowserRouter>
 					<Routes>
@@ -41,9 +44,15 @@ function App() {
 							path='/assistant'
 							element={<Assistant />}
 						/>
+						<Route
+							exact
+							path='/news'
+							element={<News/>}
+						/>
 					</Routes>
 				</BrowserRouter>
 				</NoteContextProvider>
+				</NewsContextProvider>
 				</AssistantContextProvider>
 				</AuthContextProvider>
       </>

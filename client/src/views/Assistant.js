@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/esm/Button'
 import Form from 'react-bootstrap/esm/Form'
 import InputGroup from 'react-bootstrap/esm/InputGroup'
 import { useContext, useEffect, useState} from 'react'
+import NavBar from '../components/layout/NavBar'
 
 const Assistant = () => {
     const [city, setCity] = useState("Hanoi")
@@ -36,11 +37,16 @@ const Assistant = () => {
     }   else {
         body=(
             <div className="body">
-                <div className="container">
+                <br/>
+                <div className="container mt-5">
                     <div className="searchArea shadow-sm p-3 mb-5 rounded mt-3">
                         <InputGroup>
-                            <Form.Control type="text" onChange={onChangeSearchBar}/>
-                            <Button onClick={onSearch.bind(this, city)}>Search</Button>
+                            <Form.Control type="text" placeholder="Which city would you like to search for its weather" onChange={onChangeSearchBar}/>
+                            <Button onClick={onSearch.bind(this, city)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                            </Button>
                         </InputGroup>
                     </div>
                 
@@ -66,6 +72,7 @@ const Assistant = () => {
                             <h1>Pressure: {weatherData.main.pressure} hPa</h1>
                             <i className='wi wi-humidity display-1'></i>
                             <h2 className='mb-5'>Humidity: {weatherData.main.humidity}%</h2>
+                            <br/>
                         </div>
                     </div>
                 </div>
@@ -75,6 +82,7 @@ const Assistant = () => {
 
     return (
         <div>
+            <NavBar></NavBar>
             {body}
         </div>
     )

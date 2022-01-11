@@ -70,8 +70,24 @@ const AssistantContextProvider = ({children})=>{
         }
     }
 
+    const getNewsData = async(city) => {
+        if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
+           setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
+        }
+        try {
+            const response = await axios.get('https://serene-coast-39786.herokuapp.com/https://newsapi.org/v2/everything?q=tesla&from=2021-12-11&sortBy=publishedAt&apiKey=1f8c3e472c1c4909bdb87065ce2e74de', {
+                headers: { 'Content-Type': 'application/json'}
+            })
+            console.log(response.data)
+            dispatch({type: 'NEWS_DATA_LOADED_SUCCESS', payload: response.data})
+
+        } catch (error) {
+            dispatch({type:'NEWS_DATA_LOADED_FAIL'})
+        }
+    }
+
     //context data
-    const assistantContextData = {getWeatherData, weatherState}
+    const assistantContextData = {getWeatherData, weatherState, getNewsData, }
 
     //return provider
     return (

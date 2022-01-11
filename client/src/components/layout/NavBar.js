@@ -6,11 +6,12 @@ import { AuthContext } from '../../Contexts/AuthContext'
 import { useContext } from 'react'
 
 const NavBar = () => {
-    const {authState: {user: { username }}, logoutUser} = useContext(AuthContext)
+    const {authState: {user}, logoutUser} = useContext(AuthContext)
+    const randomID = String(Math.floor(Math.random() * 1000))
 
     return (
         <Navbar expand='lg' variant="dark" className='shadow mb-5 Nav fixed-top'>
-            <Navbar.Brand className='font-weight-bolder text-white ms-2'>{username}'s app</Navbar.Brand>
+            <Navbar.Brand className='font-weight-bolder text-white ms-2'>{user!==null ? user.username : "Guest" + String(randomID)}'s app</Navbar.Brand>
          
             <Navbar.Toggle aria-controls='basic-navbar-nav'>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" className="bi bi-list mr-2" viewBox="0 0 16 16">
@@ -21,10 +22,12 @@ const NavBar = () => {
             <Navbar.Collapse id='basic-navbar-nav' >
                 <Nav className='me-auto'>
                     <Nav.Link className='font-weight-bolder' to='/home' as={Link}>Home</Nav.Link> 
+                    <Nav.Link className='font-weight-bolder' to='/assistant' as={Link}>Weather</Nav.Link> 
+                    <Nav.Link className='font-weight-bolder' to='/news' as={Link}>News</Nav.Link> 
                 </Nav>
                 <Nav className='me-2'>
                     <Nav.Link className='font-weight-bolder text-info' disabled>
-                        Welcome {username}
+                        Welcome {user!==null ? user.username : "Guest" + String(randomID)}
                     </Nav.Link>
                     <button className='btn font-weight-bolder ms-1 logout-btn' onClick={logoutUser}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-box-arrow-right me-2" viewBox="0 0 16 16">
