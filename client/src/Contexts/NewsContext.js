@@ -11,7 +11,6 @@ const NewsContextProvider = ({children})=>{
     const [newsState, dispatch] = useReducer(NewsReducer, {
         newsLoading: true,
         newsData: [],
-        commonNewsData: []
     })
 
 
@@ -21,14 +20,18 @@ const NewsContextProvider = ({children})=>{
            setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
         }
         try {
-            const response1 = await axios.get('https://serene-coast-39786.herokuapp.com/https://gnews.io/api/v4/top-headlines?q='+topic+'&token=1edbbaa04816f09d9f2ed02e0576308b&lang=en', {
-                headers: { 'Content-Type': 'application/json'}
-            })
-            const response2 = await axios.get('https://serene-coast-39786.herokuapp.com/https://gnews.io/api/v4/search?q='+topic+'&token=1edbbaa04816f09d9f2ed02e0576308b&lang=en', {
-                headers: { 'Content-Type': 'application/json'}
-            })
-            console.log(response1.data, response2.data)
-            dispatch({type: 'NEWS_DATA_LOADED_SUCCESS', payload: [response1.data, response2.data]})
+            var options = {
+                method: 'GET',
+                url: 'https://free-news.p.rapidapi.com/v1/search',
+                params: {q: topic, lang: 'en'},
+                headers: {
+                  'x-rapidapi-host': 'free-news.p.rapidapi.com',
+                  'x-rapidapi-key': '6f56f8d050mshe2cdde2878d09e4p175016jsnd9b853c16ddf'
+                }
+              };
+              const response1 = await axios.request(options)
+            console.log(response1.data)
+            dispatch({type: 'NEWS_DATA_LOADED_SUCCESS', payload: response1.data})
 
         } catch (error) {
             dispatch({type:'NEWS_DATA_LOADED_FAIL'})

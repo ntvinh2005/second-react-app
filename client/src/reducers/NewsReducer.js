@@ -6,15 +6,13 @@ const NewsReducer = (state, action) => {
             return {
                 ...state,
                 newsLoading: false,
-                newsData: payload[0], 
-                commonNewsData: payload[1]
+                newsData: payload, 
             }
         case 'NEWS_DATA_LOADED_FAIL':
             return {
                 ...state,
                 newsLoading: false,
                 newsData: [],
-                commonNewsData: []
             }
         default: return state
     }
