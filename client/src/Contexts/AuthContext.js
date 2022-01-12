@@ -69,6 +69,21 @@ const AuthContextProvider = ({children})=>{
             else return {success: false, message: error.message}
         }
     }
+
+    //update password
+    const updatePassword = async (userform, userID) => {
+        try {
+            const response = await axios.put(apiUrl+'/auth/'+userID, userform)
+            if (response.data.success)
+            localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
+            await loadUser()
+            return response.data
+        } catch (error) {
+            if (error.response.data) return error.response.data
+            else return {success: false, message: error.message}
+        }
+    }
+
     //log out
     const logoutUser = () => {
 		localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
@@ -79,7 +94,7 @@ const AuthContextProvider = ({children})=>{
 	}
 
     //context data
-    const authContextData = {loginUser, registerUser, logoutUser, authState}
+    const authContextData = {loginUser, registerUser, updatePassword, logoutUser, authState}
 
     //return provider
     return (

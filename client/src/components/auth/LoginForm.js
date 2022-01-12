@@ -62,7 +62,7 @@ const LoginForm = () =>{
     </Link>
 </p>
     <Link className="me-2 text-decoration-none" variant = "secondary" to= '/assistant'>
-        <h5>or visit us as a guest</h5>
+        <h3>or visit us as a guest!</h3>
     </Link>
 </div>
 }

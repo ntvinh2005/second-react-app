@@ -2,6 +2,7 @@ import './App.css';
 import "weather-icons/css/weather-icons.css";
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Auth from './views/Auth';
+import UpdateForm from './components/auth/UpdateForm';
 import Landing from './components/layout/Landing'
 import Home from './views/Home';
 import Assistant from './views/Assistant'
@@ -48,6 +49,11 @@ function App() {
 							exact
 							path='/news'
 							element={<News/>}
+						/>
+						<Route
+							exact
+							path='/updatePassword'
+							element={<UpdateForm/>}
 						/>
 					</Routes>
 				</BrowserRouter>
