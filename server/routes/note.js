@@ -78,7 +78,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 
         res.json({success: true, message: 'Congratuation!', note: updatedNote})
     } catch (error) {
-        
+        return res.status(500).json({success: false, message: 'Internal server error'})
     }
 }
 )
