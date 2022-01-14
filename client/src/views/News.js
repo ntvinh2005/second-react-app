@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/esm/Button'
 import { useContext, useEffect, useState} from 'react'
 import NavBar from '../components/layout/NavBar'
 
-const Assistant = () => {
+const News = () => {
     const [topic, setTopic] = useState("Covid")
     const {newsState: {newsLoading, newsData, commonNewsData}, getNewsData}= useContext(NewsContext)
     
@@ -90,4 +90,4 @@ const Assistant = () => {
     )
 }
 
-export default Assistant
+export default News

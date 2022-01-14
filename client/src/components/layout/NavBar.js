@@ -25,6 +25,7 @@ const NavBar = () => {
                     <Nav.Link className='font-weight-bolder' to='/home' as={Link}>Home</Nav.Link> 
                     <Nav.Link className='font-weight-bolder' to='/assistant' as={Link}>Weather</Nav.Link> 
                     <Nav.Link className='font-weight-bolder' to='/news' as={Link}>News</Nav.Link> 
+                    <Nav.Link className='font-weight-bolder' to='/dictionary' as={Link}>Dictionary</Nav.Link> 
                 </Nav>
                 <Nav className='me-2'>
                     <Nav.Link className='font-weight-bolder text-info' disabled>
