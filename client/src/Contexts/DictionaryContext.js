@@ -20,7 +20,7 @@ const DictionaryContextProvider = ({children})=>{
             if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
                 setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
              }
-            const response = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+word, {
+            const response = await axios.get('https://serene-coast-39786.herokuapp.com/https://api.dictionaryapi.dev/api/v2/entries/en/'+word, {
                 headers: { 'Content-Type': 'application/json'}
             })
             console.log(response.data)
